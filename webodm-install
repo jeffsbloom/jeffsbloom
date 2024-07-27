@@ -44,3 +44,83 @@ inet 192.168.50.198 “<–This is your IP” netmask 255.255.255.0 broadcast 19
 I hope this was informative or helpful in some way. I’m not the best at explaining things.
 I also have my server running on port 80 with SSL and using a custom subdomain from my domain that is registered with NameCheap. I might make a short topic on that in the future.
 Let me know if you have any questions!
+
+
+***
+ssh osboxes@192.168.1.90/
+/mnt/share/100MEDIA/100MEDIA
+
+192.168.1.90
+
+Try purging before install:
+sudo apt-get purge openssh-server
+sudo apt-get install openssh-server
+
+apt install virtualbox-guest-utils virtualbox-guest-x11
+
+To enable HTTP on Ubuntu 22.04, you can install and configure the Apache web server:
+
+Update the package indexes: sudo apt update
+Install Apache: sudo apt install apache2
+Restart the system
+Start the Apache service: sudo systemctl start apache2
+Set Apache to start at boot: sudo systemctl enable apache2
+Check the status of the Apache service: service apache2 status
+
+We need to create a non-root user with sudo privileges. This ensures a higher level of security and safety rather than logging in as root user all the time, which is potentially dangerous.
+I’ll create a new user named richie, but you can use your name or almost any name you like (some usernames are reserved for system accounts):
+adduser richie
+You will be asked the following questions and you will need to enter and confirm a new password. If you don’t want to answer the rest, just keep pressing the ENTER key:
+	• New Password – [mynewpassword]
+	• Confirm Password – [mynewpassword]
+	• Full Name
+	• Room Number
+	• Work Phone
+	• Home Phone
+	• Other
+	• Is the information correct? – Y
+Now let’s give your new user sudo privileges so you can run commands normally reserved for root (replace my username richie with yours):
+usermod -aG sudo richie
+Now if you need to run root commands as your new user, prepend them with sudo and you’ll be prompted to enter your new users password (not root password).
+
+https://www.ricmedia.com/tutorials/how-to-install-lamp-stack-on-ubuntu-22-04
+
+sudo systemctl start apache2
+sudo systemctl enable apache2
+service apache2 status
+ifconfig
+ip addr
+adduser jbloom
+usermod -aG sudo jbloom
+ufw app list
+ufw allow OpenSSH
+ufw enable
+ufw status
+exit
+
+
+Install on Ubuntu / Debian
+Commands to type:
+$ sudo apt update
+$ curl -fsSL https://get.docker.com -o get-docker.sh
+$ sh get-docker.sh
+$ sudo apt install -y git python python-pip
+Install on CentOS / RHEL
+Commands to type:
+$ curl -fsSL https://get.docker.com -o get-docker.sh
+$ sh get-docker.sh
+$ sudo yum -y install git python python-pip
+Install on Fedora
+Commands to type:
+$ curl -fsSL https://get.docker.com -o get-docker.sh
+$ sh get-docker.sh
+$ sudo dnf install git python python-pip
+
+From <https://docs.opendronemap.org/installation/> 
+
+Then open a web browser to http://localhost:8000.
+
+http://192.168.1.90:8000
+
+From <https://docs.opendronemap.org/installation/> 
+
