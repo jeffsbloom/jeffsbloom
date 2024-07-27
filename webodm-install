@@ -1,0 +1,46 @@
+I also tested Ubuntu Server 20.04.3 LTS 8
+Use Ubuntu Server if you prefer a command-line interface, it will save you some system resources.
+Host PC Specs:
+OS: Windows 11 Home (21H2)
+Processor: AMD Ryzen 7 5800H with Radeon Graphics 3.20 GHz
+Ram: 16.0 GB (15.3 GB usable) I recommend having 32gb, I just ordered more.
+VirtualBox Settings:
+Type: Linux
+Version: Ubuntu (64-bit)
+Base Memory: 10,700MB (Will be upgrading soon - Works fine for small projects currently)
+Processor(s): 8
+Virtualization Interface: Default
+Video Memory: 128MB
+Graphics Controller: VMSVGA
+Acceleration: None
+Storage: 120gb-Fixed Size-VDI (Can be expanded later)
+Network Adaptor: Bridged Adaptor
+Under “Network>Advanced” Select: Allow VMs
+Once you have the VM settings complete you can add your “OS.iso” of choice. In this case lubuntu or Ubuntu. Open the settings of the VM, select “Storage” Under “Controller: IDE” you should see a CD icon that says “Empty”. Click that and then click on the CD icon with the small down arrow on the right side. A menu will pop up, select “Choose a disk file…” Navigate to your downloaded “OS.iso” select it, and click “Open”.
+Once that is done you can start the VM, It will act mostly like a regular computer with a bootable CD in it at this point. Run through the prompts to install the OS.
+After that is installed and you are booted into the VM you can install WebODM!
+1. Open a terminal
+2. Type:
+$ sudo apt update
+$ curl -fsSL https://get.docker.com -o get-docker.sh
+$ sh get-docker.sh
+$ sudo apt install -y git python python3-pip
+$ sudo pip install docker-compose
+3. Check that Docker Compose is working:
+$ docker-compose --version
+Should display something like this “docker-compose version 1.22.0”
+4. Download WebODM
+$ git clone https://github.com/OpenDroneMap/webodm
+$ cd webodm
+$ ./webodm.sh start
+Now WebODM should be running on your VM! You can access it from the IP address of the VM, type the IP address in your host PCs web browser.
+I recommend manually assigning the VM IP around the DHCP server on your home router. This process will vary from different brands of routers. But assigning your VMs MAC address to an IP will keep the address from changing and make it so you can keep accessing the WebODM page on the same URL every time.
+Trouble finding your VM IP?
+1. Open a terminal and type
+$ sudo apt install net-tools
+$ ifconfig
+That will display a line of text something like this:
+inet 192.168.50.198 “<–This is your IP” netmask 255.255.255.0 broadcast 192.168.50.255
+I hope this was informative or helpful in some way. I’m not the best at explaining things.
+I also have my server running on port 80 with SSL and using a custom subdomain from my domain that is registered with NameCheap. I might make a short topic on that in the future.
+Let me know if you have any questions!
